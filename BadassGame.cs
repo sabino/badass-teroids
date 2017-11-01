@@ -117,44 +117,28 @@ namespace Badass_Teroids
 					GameOver = false;
 				}
 				else
-				{
 					return;
-				}
 			}
 
 			if (newState.IsKeyDown(Keys.Left))
-			{
 				ship.Rotation -= 0.05f;
-			}
 
 			if (newState.IsKeyDown(Keys.Right))
-			{
 				ship.Rotation += 0.05f;
-			}
 
 			if (newState.IsKeyUp(Keys.Space) && oldState.IsKeyDown(Keys.Space))
-			{
 				FireBullet();
-			}
 
 			if (newState.IsKeyDown(Keys.Up))
-			{
 				AccelerateShip();
-			}
 			else if (newState.IsKeyUp(Keys.Up))
-			{
 				DecelerateShip();
-			}
 
 			if (newState.IsKeyUp(Keys.LeftControl) && oldState.IsKeyDown(Keys.LeftControl))
-			{
 				HyperSpace();
-			}
 
 			if (newState.IsKeyUp(Keys.RightControl) && oldState.IsKeyDown(Keys.RightControl))
-			{
 				HyperSpace();
-			}
 
 			oldState = newState;
 
@@ -206,44 +190,25 @@ namespace Badass_Teroids
 				(float)((Math.Sin(ship.Rotation - MathHelper.PiOver2) * 0.05f)));
 
 			if (ship.Velocity.X > 5.0f)
-			{
 				ship.Velocity = new Vector2(5.0f, ship.Velocity.Y);
-			}
 			if (ship.Velocity.X < -5.0f)
-			{
 				ship.Velocity = new Vector2(-5.0f, ship.Velocity.Y);
-			}
 			if (ship.Velocity.Y > 5.0f)
-			{
 				ship.Velocity = new Vector2(ship.Velocity.X, 5.0f);
-			}
 			if (ship.Velocity.Y < -5.0f)
-			{
 				ship.Velocity = new Vector2(ship.Velocity.X, -5.0f);
-			}
 		}
 
 		private void DecelerateShip()
 		{
 			if (ship.Velocity.X < 0)
-			{
 				ship.Velocity = new Vector2(ship.Velocity.X + 0.02f, ship.Velocity.Y);
-			}
-
 			if (ship.Velocity.X > 0)
-			{
 				ship.Velocity = new Vector2(ship.Velocity.X - 0.02f, ship.Velocity.Y);
-			}
-
 			if (ship.Velocity.Y < 0)
-			{
 				ship.Velocity = new Vector2(ship.Velocity.X, ship.Velocity.Y + 0.02f);
-			}
-
 			if (ship.Velocity.Y > 0)
-			{
 				ship.Velocity = new Vector2(ship.Velocity.X, ship.Velocity.Y - 0.02f);
-			}
 		}
 
 		public void UpdateShip()
@@ -251,21 +216,13 @@ namespace Badass_Teroids
 			ship.Position += ship.Velocity;
 
 			if (ship.Position.X + ship.Width < 0)
-			{
 				ship.Position = new Vector2(ScreenWidth, ship.Position.Y);
-			}
 			if (ship.Position.X - ship.Width > ScreenWidth)
-			{
 				ship.Position = new Vector2(0, ship.Position.Y);
-			}
 			if (ship.Position.Y + ship.Height < 0)
-			{
 				ship.Position = new Vector2(ship.Position.X, ScreenHeight);
-			}
 			if (ship.Position.Y - ship.Height > ScreenHeight)
-			{
 				ship.Position = new Vector2(ship.Position.X, 0);
-			}
 		}
 
 		private void CreateAsteroids()
@@ -309,12 +266,8 @@ namespace Badass_Teroids
 				}
 
 				asteroids[i].Position = new Vector2((float)xPos, (float)yPos);
-
 				asteroids[i].Velocity = RandomVelocity();
-
-				asteroids[i].Rotation = (float)random.NextDouble() *
-						MathHelper.Pi * 4 - MathHelper.Pi * 2;
-
+				asteroids[i].Rotation = (float)random.NextDouble() * MathHelper.Pi * 4 - MathHelper.Pi * 2;
 				asteroids[i].Create();
 			}
 		}
@@ -483,7 +436,7 @@ namespace Badass_Teroids
 		{
 			Sprite newBullet = new Bullet(bullet.Texture);
 
-			Vector2 velocity = new Vector2((float)Math.Cos(ship.Rotation - (float)MathHelper.PiOver2),				(float)Math.Sin(ship.Rotation - (float)MathHelper.PiOver2));
+			Vector2 velocity = new Vector2((float)Math.Cos(ship.Rotation - (float)MathHelper.PiOver2), (float)Math.Sin(ship.Rotation - (float)MathHelper.PiOver2));
 
 			velocity.Normalize();
 			velocity *= 6.0f;
@@ -510,14 +463,14 @@ namespace Badass_Teroids
 
 				Vector2 size = font.MeasureString(text);
 
-				position2 = new Vector2((ScreenWidth / 2) - (size.X / 2),					(ScreenHeight / 2) - (size.Y * 2));
+				position2 = new Vector2((ScreenWidth / 2) - (size.X / 2), (ScreenHeight / 2) - (size.Y * 2));
 
 				spriteBatch.DrawString(font, text, position2, Color.White);
 
 				text = "PRESS <ENTER> TO START";
 				size = font.MeasureString(text);
 
-				position2 = new Vector2((ScreenWidth / 2) - (size.X / 2),					(ScreenHeight / 2) + (size.Y * 2));
+				position2 = new Vector2((ScreenWidth / 2) - (size.X / 2), (ScreenHeight / 2) + (size.Y * 2));
 
 				spriteBatch.DrawString(font, text, position2, Color.White);
 
@@ -529,7 +482,7 @@ namespace Badass_Teroids
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, null);
 
 			Vector2 position = new Vector2(10, 10);
-			spriteBatch.DrawString(font,				"Score = " + score.ToString(),				position,				Color.White);
+			spriteBatch.DrawString(font, "Score = " + score.ToString(), position, Color.White);
 
 			Rectangle shipRect;
 
