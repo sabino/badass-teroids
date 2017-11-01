@@ -43,7 +43,7 @@ namespace Badass_Teroids
 
 		public Sprite()
 		{
-			
+
 		}
 
 		public Texture2D Texture
@@ -123,17 +123,7 @@ namespace Badass_Teroids
 
 		public virtual void Draw(SpriteBatch spriteBatch)
 		{
-			//spriteBatch.Draw(texture, Position, null, color, Rotation, scale / 2f, 1f, 0, 0);
-
-			spriteBatch.Draw(this.Texture,
-					this.Position,
-					null,
-					Color.White,
-					this.Rotation,
-					this.Center,
-					this.Scale,
-					SpriteEffects.None,
-					1.0f);
+			spriteBatch.Draw(this.Texture, this.Position, null, Color.White, this.Rotation, this.Center, this.Scale, SpriteEffects.None, 1.0f);
 		}
 	}
 }
